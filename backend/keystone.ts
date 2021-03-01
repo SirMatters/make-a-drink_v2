@@ -5,6 +5,10 @@ import {
   withItemData,
 } from '@keystone-next/keystone/session';
 import { createAuth } from '@keystone-next/auth';
+import { Cocktail } from './schemas/Cocktail';
+import { Comment } from './schemas/Comment';
+import { Ingredient } from './schemas/Ingredient';
+import { CocktailImage } from './schemas/CocktailImage';
 import { User } from './schemas/User';
 
 const sessionConfig = {
@@ -29,7 +33,7 @@ export default withAuth(
       adapter: 'mongoose',
       url: databasUrl,
     },
-    lists: createSchema({ User }),
+    lists: createSchema({ User, Cocktail, CocktailImage, Comment, Ingredient }),
     ui: {
       isAccessAllowed: ({ session }) => !!session?.data,
     },
