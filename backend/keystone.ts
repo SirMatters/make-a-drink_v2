@@ -27,8 +27,16 @@ const { withAuth } = createAuth({
   },
 });
 
+console.log(process.env.FRONTEND_URL);
+
 export default withAuth(
   config({
+    server: {
+      cors: {
+        origin: [process.env.FRONTEND_URL],
+        credentials: true,
+      },
+    },
     db: {
       adapter: 'mongoose',
       url: databasUrl,
