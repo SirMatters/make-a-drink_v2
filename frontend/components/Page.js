@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import Footer from "./Footer";
 import Header from './Header'
 const GlobalStyles = createGlobalStyle`
   html {
@@ -10,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
       --max-width: 1000px;
       --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
       box-sizing: border-box;
+      font-size: 62.5%;
     }
     *, *:before, *:after {
       box-sizing: inherit;
@@ -41,6 +43,8 @@ const InnerStyles = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
 `;
 
 export default function Page({children}) {
@@ -49,6 +53,7 @@ export default function Page({children}) {
       <GlobalStyles/>
       <Header/>
       <InnerStyles>{children}</InnerStyles>
+      {/* <Footer/> */}
     </div>
   )
 }
