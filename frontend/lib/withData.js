@@ -3,7 +3,7 @@ import withApollo from "next-with-apollo";
 import { createUploadLink } from 'apollo-upload-client'
 import { onError } from '@apollo/link-error'
 import { endpoint, prodEndpoint } from '../config';
-
+import { getDataFromTree } from '@apollo/client/react/ssr';
 
 function createClient({headers, initialState}) {
   return new ApolloClient({
@@ -23,7 +23,7 @@ function createClient({headers, initialState}) {
       createUploadLink({
         uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
         fetchOptions: {
-          creadentials: 'include'
+          credentials: 'include'
         },
         // eneables SSR with logged in state
         headers
@@ -37,8 +37,8 @@ function createClient({headers, initialState}) {
           }
         }
       }
-    })
+    }).restore(initialState || {})
   })
 }
 
-export default withApollo(createClient)
+export default withApollo(createClient, { getDataFromTree })
