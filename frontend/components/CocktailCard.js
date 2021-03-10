@@ -1,3 +1,4 @@
+import Link from "next/link"
 import styled from "styled-components"
 import StarRating from "./StarRating"
 
@@ -16,6 +17,7 @@ export default function CocktailCard({cocktail}){
       <div className="data-section">
         <p>{cocktail.name}</p>
       </div>
+      <Link href={`/cocktails/${cocktail.id}`}>to cocktail page</Link>
       <StarRating/>
     </CocktailCardStyles>
   )
