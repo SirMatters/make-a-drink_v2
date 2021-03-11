@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
   `;
 
 const InnerStyles = styled.div`
-  max-width: var(--maxWidth);
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 2rem;
   display: flex;
